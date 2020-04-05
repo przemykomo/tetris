@@ -1,0 +1,8 @@
+# Fix languages
+*.cpp linguist-language=C++
+*.h linguist-language=C++
+*.hpp linguist-language=C++
+
+khrplatform.h linguist-vendored
+glad.h linguist-vendored
+glad.c linguist-vendored
