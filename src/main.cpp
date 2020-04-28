@@ -1,39 +1,13 @@
-#include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include "window.hpp"
+#include <cstdlib>
+#include <ctime>
 
-constexpr int WIDTH{640};
-constexpr int HEIGHT{480};
+constexpr int WIDTH{480};
+constexpr int HEIGHT{630};
 
 int main() {
-    if(!glfwInit()) {
-        std::cout << "Can't initialize GLFW!\n";
-        return -1;
-    }
-
-    GLFWwindow* window{ glfwCreateWindow(WIDTH, HEIGHT, "Opengl sample", NULL, NULL) };
-    if(!window) {
-        glfwTerminate();
-        return -1;
-    }
-
-    glfwMakeContextCurrent(window);
-
-    if(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cout << "Can't initialize GLAD!\n";
-        return -1;
-    }
-
-    glViewport(0, 0, WIDTH, HEIGHT);
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-
-    while(!glfwWindowShouldClose(window)) {
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
+    std::srand(std::time(0));
+    Window window(WIDTH, HEIGHT, "Tetris");
+    window.loop();
     return 0;
 }

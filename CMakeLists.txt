@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(sample VERSION 0.1)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
+
 file(GLOB_RECURSE SRC ${PROJECT_SOURCE_DIR}/src/*)
 
 add_executable(sample ${SRC})
